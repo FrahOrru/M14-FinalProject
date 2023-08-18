@@ -178,10 +178,18 @@ const tick = () => {
     (parallaxY - cameraGroup.position.y) * 5 * deltaTime;
 
   raycaster.setFromCamera(cursor, camera);
-  const intersects = raycaster.intersectObjects(scene.children);
+  const intersects = raycaster.intersectObjects(scene.children, true);
 
   for (let i = 0; i < intersects.length; i++) {
-    if (intersects[i].name !== "mesh1") {
+    const intersectedObject = intersects[i].object;
+
+    if (intersectedObject !== particles && intersectedObject.name === "mesh1") {
+      gsap.to(intersectedObject.rotation, {
+        duration: 1.5,
+        ease: "power2.inOut",
+        x: "+=6",
+        y: "+=3",
+      });
     }
   }
 
