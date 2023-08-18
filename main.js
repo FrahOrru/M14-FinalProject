@@ -43,13 +43,9 @@ mesh1.position.x = 2;
 
 mesh1.name = "mesh1";
 
-const inverseCamping = exportedGroup.clone();
+const sectionMeshes = [mesh1, exportedGroup];
 
-inverseCamping.position.y = -objectsDistance * 2.6;
-
-const sectionMeshes = [mesh1, exportedGroup, inverseCamping];
-
-scene.add(mesh1, exportedGroup, inverseCamping);
+scene.add(mesh1, exportedGroup);
 
 window.addEventListener("scroll", () => {
   scrollY = window.scrollY;
